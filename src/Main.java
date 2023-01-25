@@ -7,6 +7,7 @@ import java.time.LocalDateTime;
 
 public class Main {
     public static void main(String[] args) {
+
         DailyTask firstTask = new DailyTask(
                 "firstTask",
                 Type.WORK,
@@ -19,12 +20,17 @@ public class Main {
                 "frhtrhsdhf",
                 LocalDateTime.of(2023,1,1,1,0)
         );
-        MonthlyTask thirdTask = new MonthlyTask(
-                "thirdTask",
-                Type.PERSONAL,
-                "fkfkhgfkhf",
-                LocalDateTime.of(2023,1,1,1,0)
-        );
+        YearlyTask thirdTask = null;
+        try {
+            thirdTask = new YearlyTask(
+                    "",
+                    Type.WORK,
+                    "раралгалаорп",
+                    LocalDateTime.of(2023, 1, 1, 1, 0)
+            );
+        } catch (IncorrectArgumentException e) {
+            System.out.println(e.getMessage());
+        }
 
         TaskService taskService = new TaskService();
         taskService.add(firstTask);
